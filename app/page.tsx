@@ -1,3 +1,4 @@
+import ExploreBtn from '@/components/ExploreBtn'
 import React from 'react'
 
 const page = () => {
@@ -8,6 +9,7 @@ const page = () => {
         You Cannot miss
       </h1>
       <p className='text-center mt-5'> Hackathons, Meetups, and Confrences all in one place</p>
+      <ExploreBtn />
     </section>
   )
 }
