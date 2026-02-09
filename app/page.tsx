@@ -1,7 +1,10 @@
+import EventCard from '@/components/EventCard'
 import ExploreBtn from '@/components/ExploreBtn'
-import React from 'react'
+import { events } from '@/lib/Constants';
+
 
 const page = () => {
+
   return (
     <section>
       <h1 className='text-center'> The Hub for Every Event
@@ -12,9 +15,11 @@ const page = () => {
       <ExploreBtn />
       <div className='mt-20 space-y-7'>
         <h3>Featured Events</h3>
-        <ul className='events'> 
-          {[1,2,3,4,5,6].map((event) => (
-          <ul key={event}>Event {event}</ul>
+        <ul className='events list-none'>
+          {events.map((event) => (
+            <li key={event.title} >
+              <EventCard {...event} />
+            </li>
           ))}
         </ul>
       </div>
