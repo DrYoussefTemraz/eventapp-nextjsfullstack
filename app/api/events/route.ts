@@ -21,6 +21,13 @@ export async function POST(req: NextRequest) {
                     .replace(/^-|-$/g, '')
                 : ''
             
+            if (!slug) {
+                return NextResponse.json(
+                    { message: "Title is required and must contain alphanumeric characters" },
+                    { status: 400 }
+                )
+            }
+            
             // Convert string fields that should be arrays
             event = {
                 ...rawEvent,
