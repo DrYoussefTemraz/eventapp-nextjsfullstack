@@ -1,4 +1,4 @@
-import { Event } from "@/database";
+import { Event, IEvent } from "@/database";
 import connectDB from "@/lib/mongodb";
 import { v2 as cloudinary } from 'cloudinary';
 import { NextRequest, NextResponse } from "next/server";
@@ -7,7 +7,7 @@ export async function POST(req: NextRequest) {
     try {
         await connectDB()
         const formData = await req.formData()
-        let event
+        let event: Partial<IEvent>
         try {
             const rawEvent = Object.fromEntries(formData.entries())
             
@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
                 )
             }
             
-            // Convert string fields that should be arrays
+            // Convert string fields that should be arrays and type the event object
             event = {
                 ...rawEvent,
                 slug,
